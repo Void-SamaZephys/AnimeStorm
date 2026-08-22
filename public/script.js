@@ -111,7 +111,7 @@ if (searchInput) {
 }
 
 // =======================
-// PROFİL YÖNETİMİ (localStorage)
+// PROFİL VE GALERİDEN FOTOĞRAF YÜKLEME
 // =======================
 const openProfileBtn = document.getElementById('openProfileBtn');
 const profileModal = document.getElementById('profileModal');
@@ -119,42 +119,48 @@ const closeProfileModal = document.getElementById('closeProfileModal');
 const saveProfileBtn = document.getElementById('saveProfileBtn');
 
 const usernameInput = document.getElementById('usernameInput');
-const avatarSeedInput = document.getElementById('avatarSeedInput');
+const avatarFileInput = document.getElementById('avatarFileInput');
 const navUsername = document.getElementById('navUsername');
 const navAvatar = document.getElementById('navAvatar');
 const profileAvatarPreview = document.getElementById('profileAvatarPreview');
 
-// Sayfa yüklendiğinde var olan profili yükle
+let currentAvatarData = 'https://api.dicebear.com/7.x/bottts/svg?seed=W';
+
 function loadProfile() {
   const savedName = localStorage.getItem('animestorm_username') || 'W';
-  const savedSeed = localStorage.getItem('animestorm_avatar_seed') || 'W';
+  const savedAvatar = localStorage.getItem('animestorm_avatar_data') || currentAvatarData;
 
   usernameInput.value = savedName;
-  avatarSeedInput.value = savedSeed;
   navUsername.textContent = savedName;
 
-  const avatarUrl = `https://api.dicebear.com/7.x/bottts/svg?seed=${encodeURIComponent(savedSeed)}`;
-  navAvatar.src = avatarUrl;
-  profileAvatarPreview.src = avatarUrl;
+  currentAvatarData = savedAvatar;
+  navAvatar.src = savedAvatar;
+  profileAvatarPreview.src = savedAvatar;
 }
+
+// Galeriden resim seçilince Base64'e çevir ve önizle
+avatarFileInput.addEventListener('change', (e) => {
+  const file = e.target.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = function(event) {
+      currentAvatarData = event.target.result;
+      profileAvatarPreview.src = currentAvatarData;
+    };
+    reader.readAsDataURL(file);
+  }
+});
 
 // Profili Kaydet
 saveProfileBtn.onclick = () => {
   const newName = usernameInput.value.trim() || 'Kullanıcı';
-  const newSeed = avatarSeedInput.value.trim() || 'default';
 
   localStorage.setItem('animestorm_username', newName);
-  localStorage.setItem('animestorm_avatar_seed', newSeed);
+  localStorage.setItem('animestorm_avatar_data', currentAvatarData);
 
   loadProfile();
   profileModal.style.display = 'none';
 };
-
-// Avatar Tohumu değiştikçe önizlemeyi anlık güncelle
-avatarSeedInput.addEventListener('input', (e) => {
-  const seed = e.target.value.trim() || 'default';
-  profileAvatarPreview.src = `https://api.dicebear.com/7.x/bottts/svg?seed=${encodeURIComponent(seed)}`;
-});
 
 openProfileBtn.onclick = () => {
   profileModal.style.display = 'flex';
@@ -164,6 +170,6 @@ closeProfileModal.onclick = () => {
   profileModal.style.display = 'none';
 };
 
-// Sayfa açıldığında çalıştır
+// Sayfa açıldığında yükle
 loadProfile();
 

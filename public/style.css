@@ -95,9 +95,10 @@ body {
 }
 
 .profile-btn img {
-    width: 24px;
-    height: 24px;
+    width: 28px;
+    height: 28px;
     border-radius: 50%;
+    object-fit: cover;
 }
 
 .container {
@@ -186,7 +187,8 @@ body {
     height: 80px;
     border-radius: 50%;
     background: #2a2a2a;
-    padding: 5px;
+    padding: 2px;
+    object-fit: cover;
 }
 
 .profile-settings label {
@@ -194,7 +196,7 @@ body {
     color: #aaa;
 }
 
-.profile-settings input {
+.profile-settings input[type="text"], .profile-settings input[type="file"] {
     padding: 8px;
     background: #2a2a2a;
     border: 1px solid #444;
