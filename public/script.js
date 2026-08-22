@@ -1,6 +1,5 @@
 let animeData = [];
 
-// data.json verisini çek
 fetch('data.json')
   .then(res => res.json())
   .then(data => {
@@ -8,12 +7,9 @@ fetch('data.json')
     renderAnimeGrid(animeData);
   });
 
-// Anime Kartlarını Ekrana Bas
 function renderAnimeGrid(list) {
   const grid = document.getElementById('animeGrid');
-  if (!grid) return;
   grid.innerHTML = '';
-
   list.forEach(anime => {
     let card = document.createElement('div');
     card.className = 'anime-card';
@@ -23,24 +19,21 @@ function renderAnimeGrid(list) {
   });
 }
 
-// Modal (Detay Penceresi) Aç
 function openModal(anime) {
   document.getElementById('modalTitle').textContent = anime.title;
   document.getElementById('modalImage').src = anime.image;
   document.getElementById('modalDescription').textContent = anime.description;
 
-  // Fansub Kısmı
   let fansubSec = document.getElementById('fansubSection');
   let fansubLnk = document.getElementById('fansubLink');
   if (anime.fansub) {
     fansubSec.style.display = 'block';
     fansubLnk.textContent = anime.fansub;
-    fansubLnk.href = anime.fansUrl || '#';
+    fansubLnk.href = anime.fansubUrl || '#';
   } else {
     fansubSec.style.display = 'none';
   }
 
-  // Bölümler Grid Kısmı
   let epGrid = document.getElementById('episodesGrid');
   epGrid.innerHTML = '';
   document.getElementById('playerSection').style.display = 'none';
@@ -59,7 +52,6 @@ function openModal(anime) {
   document.getElementById('detailModal').style.display = 'flex';
 }
 
-// Bölüm Oynat
 function playEp(ep) {
   document.getElementById('currentEpisodeTitle').textContent = ep.title;
   document.getElementById('playerSection').style.display = 'block';
@@ -80,43 +72,34 @@ function playEp(ep) {
   }
 }
 
-// Modal Kapat
 document.getElementById('closeModal').onclick = () => {
   document.getElementById('detailModal').style.display = 'none';
   document.getElementById('videoPlayer').src = '';
 };
 
-// Steam Tarzı Arama (Arama çubuğunun altında liste açar)
+// Steam Tarzı Arama
 const searchInput = document.getElementById('searchInput');
 const searchResults = document.getElementById('searchResults');
 
-if (searchInput) {
-  searchInput.addEventListener('input', (e) => {
-    const value = e.target.value.toLowerCase().trim();
-    searchResults.innerHTML = '';
+searchInput.addEventListener('input', (e) => {
+  const value = e.target.value.toLowerCase().trim();
+  searchResults.innerHTML = '';
 
-    if (value === '') return;
+  if (value === '') return;
 
-    const filtered = animeData.filter(anime =>
-      anime.title.toLowerCase().includes(value)
-    );
+  const filtered = animeData.filter(anime =>
+    anime.title.toLowerCase().includes(value)
+  );
 
-    filtered.forEach(anime => {
-      let item = document.createElement('div');
-      item.style.padding = '10px';
-      item.style.cursor = 'pointer';
-      item.style.borderBottom = '1px solid #333';
-      item.style.color = '#fff';
-      item.textContent = anime.title;
-
-      item.onclick = () => {
-        searchResults.innerHTML = '';
-        searchInput.value = '';
-        openModal(anime);
-      };
-
-      searchResults.appendChild(item);
-    });
+  filtered.forEach(anime => {
+    let item = document.createElement('div');
+    item.textContent = anime.title;
+    item.onclick = () => {
+      searchResults.innerHTML = '';
+      searchInput.value = '';
+      openModal(anime);
+    };
+    searchResults.appendChild(item);
   });
-}
+});
 

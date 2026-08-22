@@ -1,59 +1,131 @@
-* { box-sizing: border-box; margin: 0; padding: 0; font-family: sans-serif; }
-body { background-color: #121212; color: #fff; padding: 15px; }
-.navbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
-.logo span { color: #00a8ff; }
-.search-container { position: relative; }
-#searchInput { padding: 8px 12px; background: #222; border: 1px solid #444; color: #fff; border-radius: 4px; }
-.search-results { position: absolute; top: 100%; left: 0; right: 0; background: #222; border: 1px solid #444; z-index: 99; display: none; }
-.search-result-item { padding: 8px; cursor: pointer; border-bottom: 1px solid #333; }
-
-.anime-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 15px; }
-.anime-card { background: #1e1e1e; border-radius: 8px; padding: 10px; cursor: pointer; text-align: center; }
-.anime-card img { width: 100%; height: 180px; object-fit: cover; border-radius: 6px; }
-.anime-card h3 { font-size: 14px; margin-top: 8px; }
-
-/* Modal Stilleri */
-.modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; justify-content: center; align-items: center; }
-.modal-content { background: #1e1e1e; padding: 20px; border-radius: 8px; width: 90%; max-width: 500px; max-height: 90vh; overflow-y: auto; position: relative; }
-.close-btn { position: absolute; right: 15px; top: 10px; font-size: 24px; cursor: pointer; color: #fff; }
-.episode-btn { background: #00a8ff; color: #fff; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-size: 12px; }
-
-/* Arama sonuçları açılır kutusu (Steam tarzı) */
-#searchResults {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background: #1a1a1a;
-    border: 1px solid #333;
-    border-radius: 6px;
-    margin-top: 5px;
-    max-height: 250px;
-    overflow-y: auto;
-    z-index: 1000;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
 }
 
-/* Arama kutusunun bulunduğu üst alanın pozisyonu relative olmalı ki sonuç kutusu ona göre hizalansın */
-.search-container {
-    position: relative;
+body {
+    background-color: #121212;
+    color: #fff;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: #1e1e1e;
+    border-bottom: 1px solid #333;
+}
+
+.logo span {
+    color: #0088ff;
 }
 
 .search-container {
     position: relative;
+    width: 200px;
 }
 
-#searchResults {
+#searchInput {
+    width: 100%;
+    padding: 8px 12px;
+    background: #2a2a2a;
+    border: 1px solid #444;
+    border-radius: 4px;
+    color: #fff;
+}
+
+.search-results {
     position: absolute;
     top: 100%;
     left: 0;
     width: 100%;
-    background-color: #1a1a1a;
-    border: 1px solid #333;
-    border-radius: 6px;
-    margin-top: 5px;
+    background: #1e1e1e;
+    border: 1px solid #444;
+    border-radius: 0 0 4px 4px;
+    z-index: 100;
     max-height: 200px;
     overflow-y: auto;
-    z-index: 9999;
+}
+
+.search-results div {
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #333;
+}
+
+.search-results div:hover {
+    background: #2a2a2a;
+}
+
+.container {
+    padding: 20px;
+}
+
+.anime-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.anime-card {
+    background: #1e1e1e;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+.anime-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.anime-card h3 {
+    font-size: 14px;
+    margin-top: 8px;
+}
+
+/* Modal Stili */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: #1e1e1e;
+    padding: 20px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px; right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.episode-btn {
+    background: #0088ff;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
