@@ -23,6 +23,12 @@ body {
     color: #0088ff;
 }
 
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
 .search-container {
     position: relative;
     width: 200px;
@@ -50,7 +56,6 @@ body {
     overflow-y: auto;
 }
 
-/* Küçük resimli arama item stili */
 .search-results div.search-item {
     display: flex;
     align-items: center;
@@ -74,6 +79,25 @@ body {
 .search-results div.search-item span {
     font-size: 14px;
     color: #fff;
+}
+
+/* Profil Butonu */
+.profile-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #2a2a2a;
+    border: 1px solid #444;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.profile-btn img {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
 }
 
 .container {
@@ -107,7 +131,7 @@ body {
     margin-top: 8px;
 }
 
-/* Modal Stili */
+/* Modal Genel Stili */
 .modal {
     display: none;
     position: fixed;
@@ -136,12 +160,45 @@ body {
     cursor: pointer;
 }
 
-.episode-btn {
+.episode-btn, .save-btn {
     background: #0088ff;
     color: white;
     border: none;
     padding: 8px 12px;
     border-radius: 4px;
     cursor: pointer;
+}
+
+/* Profil Düzenleme İç Alanı */
+.profile-settings {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 15px;
+}
+
+.avatar-preview {
+    text-align: center;
+}
+
+.avatar-preview img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: #2a2a2a;
+    padding: 5px;
+}
+
+.profile-settings label {
+    font-size: 12px;
+    color: #aaa;
+}
+
+.profile-settings input {
+    padding: 8px;
+    background: #2a2a2a;
+    border: 1px solid #444;
+    border-radius: 4px;
+    color: #fff;
 }
 

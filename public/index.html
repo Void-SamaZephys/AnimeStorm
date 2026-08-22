@@ -10,9 +10,18 @@
 
     <header class="navbar">
         <h1 class="logo">ANIME <span>STORM</span></h1>
-        <div class="search-container">
-            <input type="text" id="searchInput" placeholder="Anime ara...">
-            <div id="searchResults" class="search-results"></div>
+        
+        <div class="nav-right">
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Anime ara...">
+                <div id="searchResults" class="search-results"></div>
+            </div>
+            
+            <!-- Profil Butonu -->
+            <button id="openProfileBtn" class="profile-btn">
+                <img id="navAvatar" src="https://api.dicebear.com/7.x/bottts/svg?seed=W" alt="Profil">
+                <span id="navUsername">Profil</span>
+            </button>
         </div>
     </header>
 
@@ -21,7 +30,7 @@
         <div class="anime-grid" id="animeGrid"></div>
     </main>
 
-    <!-- Modal (Detay Penceresi) -->
+    <!-- Anime Detay Modalı -->
     <div id="detailModal" class="modal">
         <div class="modal-content">
             <span class="close-btn" id="closeModal">&times;</span>
@@ -44,6 +53,28 @@
 
             <div id="fansubSection" style="margin-top:15px; font-size:12px; color:#888;">
                 Çeviri & Emek: <a id="fansubLink" href="#" target="_blank" style="color:#0088ff;"></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Profil Ayarları Modalı -->
+    <div id="profileModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" id="closeProfileModal">&times;</span>
+            <h2>Profil Ayarları</h2>
+            
+            <div class="profile-settings">
+                <div class="avatar-preview">
+                    <img id="profileAvatarPreview" src="https://api.dicebear.com/7.x/bottts/svg?seed=W" alt="Avatar">
+                </div>
+                
+                <label for="usernameInput">Kullanıcı Adın:</label>
+                <input type="text" id="usernameInput" placeholder="Kullanıcı adını yaz..." value="W">
+
+                <label for="avatarSeedInput">Avatar Tohumu (Rastgele ikon üretir):</label>
+                <input type="text" id="avatarSeedInput" placeholder="Örn: Gojo, Naruto, W..." value="W">
+
+                <button id="saveProfileBtn" class="save-btn">Profilini Kaydet</button>
             </div>
         </div>
     </div>
