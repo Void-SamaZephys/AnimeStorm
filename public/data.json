@@ -5,9 +5,7 @@
     "image": "https://cdn.myanimelist.net/images/anime/1171/109222.jpg",
     "description": "Lise öğrencisi Yuji Itadori, lanetli bir nesneyi yutarak güçlü bir lanet olan Sukuna'nın taşıyıcısı haline gelir.",
     "genres": ["Aksiyon", "Fantezi"],
-    "themes": ["Lanetler", "Süper Güçler"],
-    "fansub": "Unmei Fansub",
-    "fansubUrl": "https://unmei.com",
+    "fansub": "Unmei Fansub / Adonis Fansub",
     "episodes": [
       {
         "number": 1,
@@ -76,6 +74,46 @@
           {
             "name": "Sibnet",
             "url": "https://video.sibnet.ru/shell.php?videoid=5522154"
+          }
+        ]
+      },
+      {
+        "number": 8,
+        "title": "8. Bölüm",
+        "sources": [
+          {
+            "name": "Sibnet",
+            "url": "https://video.sibnet.ru/shell.php?videoid=5522166"
+          }
+        ]
+      },
+      {
+        "number": 9,
+        "title": "9. Bölüm",
+        "sources": [
+          {
+            "name": "Sibnet",
+            "url": "https://video.sibnet.ru/shell.php?videoid=5522206"
+          }
+        ]
+      },
+      {
+        "number": 10,
+        "title": "10. Bölüm",
+        "sources": [
+          {
+            "name": "Sibnet",
+            "url": "https://video.sibnet.ru/shell.php?videoid=5522219"
+          }
+        ]
+      },
+      {
+        "number": 11,
+        "title": "11. Bölüm",
+        "sources": [
+          {
+            "name": "Sibnet",
+            "url": "https://video.sibnet.ru/shell.php?videoid=5522230"
           }
         ]
       }
