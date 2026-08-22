@@ -1,3 +1,4 @@
+cat << 'EOF' > public/script.js
 let animeData = [];
 
 fetch('data.json')
@@ -102,4 +103,4 @@ searchInput.addEventListener('input', (e) => {
     searchResults.appendChild(item);
   });
 });
-
+EOF
