@@ -80,7 +80,7 @@ document.getElementById('closeModal').onclick = () => {
   document.getElementById('videoPlayer').src = '';
 };
 
-// Steam Tarzı Arama
+// Steam Tarzı Küçük Resimli Arama
 const searchInput = document.getElementById('searchInput');
 const searchResults = document.getElementById('searchResults');
 
@@ -97,7 +97,9 @@ if (searchInput) {
 
     filtered.forEach(anime => {
       let item = document.createElement('div');
-      item.textContent = anime.title;
+      item.className = 'search-item';
+      item.innerHTML = `<img src="${anime.image}" alt="${anime.title}"><span>${anime.title}</span>`;
+      
       item.onclick = () => {
         searchResults.innerHTML = '';
         searchInput.value = '';
