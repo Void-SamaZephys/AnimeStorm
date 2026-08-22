@@ -73,3 +73,21 @@ document.getElementById('closeModal').onclick = () => {
     document.getElementById('videoPlayer').src = '';
 };
 
+document.getElementById('searchInput').addEventListener('input', (e) => {
+    const value = e.target.value.toLowerCase().trim();
+    const filtered = animeData.filter(anime => 
+        anime.title.toLowerCase().includes(value)
+    );
+    
+    const grid = document.getElementById('animeGrid');
+    grid.innerHTML = '';
+    
+    filtered.forEach(anime => {
+        let card = document.createElement('div');
+        card.className = 'anime-card';
+        card.innerHTML = `<img src="${anime.image}" alt="${anime.title}"><h3>${anime.title}</h3>`;
+        card.onclick = () => openModal(anime);
+        grid.appendChild(card);
+    });
+});
+
