@@ -1,4 +1,3 @@
-cat << 'EOF' > public/script.js
 let animeData = [];
 
 fetch('data.json')
@@ -6,11 +5,14 @@ fetch('data.json')
   .then(data => {
     animeData = data;
     renderAnimeGrid(animeData);
-  });
+  })
+  .catch(err => console.error("Data çekilemedi:", err));
 
 function renderAnimeGrid(list) {
   const grid = document.getElementById('animeGrid');
+  if (!grid) return;
   grid.innerHTML = '';
+
   list.forEach(anime => {
     let card = document.createElement('div');
     card.className = 'anime-card';
@@ -82,25 +84,27 @@ document.getElementById('closeModal').onclick = () => {
 const searchInput = document.getElementById('searchInput');
 const searchResults = document.getElementById('searchResults');
 
-searchInput.addEventListener('input', (e) => {
-  const value = e.target.value.toLowerCase().trim();
-  searchResults.innerHTML = '';
+if (searchInput) {
+  searchInput.addEventListener('input', (e) => {
+    const value = e.target.value.toLowerCase().trim();
+    searchResults.innerHTML = '';
 
-  if (value === '') return;
+    if (value === '') return;
 
-  const filtered = animeData.filter(anime =>
-    anime.title.toLowerCase().includes(value)
-  );
+    const filtered = animeData.filter(anime =>
+      anime.title.toLowerCase().includes(value)
+    );
 
-  filtered.forEach(anime => {
-    let item = document.createElement('div');
-    item.textContent = anime.title;
-    item.onclick = () => {
-      searchResults.innerHTML = '';
-      searchInput.value = '';
-      openModal(anime);
-    };
-    searchResults.appendChild(item);
+    filtered.forEach(anime => {
+      let item = document.createElement('div');
+      item.textContent = anime.title;
+      item.onclick = () => {
+        searchResults.innerHTML = '';
+        searchInput.value = '';
+        openModal(anime);
+      };
+      searchResults.appendChild(item);
+    });
   });
-});
-EOF
+}
+
