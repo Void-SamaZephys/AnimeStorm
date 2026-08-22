@@ -28,12 +28,8 @@
             "url": "https://video.sibnet.ru/shell.php?videoid=5522023"
           }
         ]
-      }
-    ]
-  }
-]
-
-,      {
+      },
+      {
         "number": 3,
         "title": "3. Bölüm",
         "sources": [
@@ -43,4 +39,7 @@
           }
         ]
       }
+    ]
+  }
+]
 
