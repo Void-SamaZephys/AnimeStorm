@@ -18,3 +18,24 @@ body { background-color: #121212; color: #fff; padding: 15px; }
 .close-btn { position: absolute; right: 15px; top: 10px; font-size: 24px; cursor: pointer; color: #fff; }
 .episode-btn { background: #00a8ff; color: #fff; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-size: 12px; }
 
+/* Arama sonuçları açılır kutusu (Steam tarzı) */
+#searchResults {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 6px;
+    margin-top: 5px;
+    max-height: 250px;
+    overflow-y: auto;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+}
+
+/* Arama kutusunun bulunduğu üst alanın pozisyonu relative olmalı ki sonuç kutusu ona göre hizalansın */
+.search-container {
+    position: relative;
+}
+
