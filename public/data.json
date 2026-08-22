@@ -1,0 +1,25 @@
+[
+  {
+    "id": 1,
+    "title": "Jujutsu Kaisen",
+    "image": "https://cdn.myanimelist.net/images/anime/1171/109222.jpg",
+    "description": "Lise öğrencisi Yuji Itadori, lanetli bir nesneyi yutarak güçlü bir lanet olan Sukuna'nın taşıyıcısı haline gelir.",
+    "genres": ["Aksiyon", "Fantezi"],
+    "themes": ["Lanetler", "Süper Güçler"],
+    "fansub": "Unmei Fansub",
+    "fansubUrl": "https://unmei.com",
+    "episodes": [
+      {
+        "number": 1,
+        "title": "1. Bölüm",
+        "sources": [
+          {
+            "name": "Sibnet",
+            "url": "https://video.sibnet.ru/shell.php?videoid=4091475&share=1"
+          }
+        ]
+      }
+    ]
+  }
+]
+
